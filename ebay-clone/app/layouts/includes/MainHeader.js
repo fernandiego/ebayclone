@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link";
-import {BsChevronDown} from "react-icons/bs";
-import {AiOutlineShoppingCart} from "react-icons/ai";
+import {AiOutlineSearch} from "react-icons/ai";
+import {BiLoaderCircle} from "react-icons/bi";
 
-export default function TopMenu() {
+export default function MainHeader() {
     return (
         <>
             <div id="TopMenu" className="border-b">
