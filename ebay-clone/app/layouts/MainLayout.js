@@ -2,6 +2,7 @@
 import TopMenu from "@/app/layouts/includes/TopMenu";
 import MainHeader from "@/app/layouts/includes/MainHeader";
 import SubMenu from "@/app/layouts/includes/SubMenu";
+import Footer from "@/app/layouts/includes/Footer";
 
 export default function MainLayout({children}) {
     return (
@@ -10,6 +11,8 @@ export default function MainLayout({children}) {
                 <TopMenu/>
                 <MainHeader/>
                 <SubMenu/>
+                {children}
+                <Footer/>
             </div>
         </>
     )
