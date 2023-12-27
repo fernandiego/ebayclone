@@ -28,7 +28,7 @@ export default function CheckoutItem({product}) {
                     <div className="text-sm mt-2">
                         {product.description.substring(0, 130)}...
                     </div>
-                    {pathname == '/cart' ?
+                    {pathname === '/cart' ?
                          <div className="text-sm mt-2 w-full flex justify-end underline text-blue-500 cursor-pointer">
                             Remove
                         </div>
