@@ -8,4 +8,35 @@ const Context = createContext()
 
 const Provider = ({children}) => {
     const router = useRouter()
+
+    const [user, setUser] = useState(null)
+    const [id, setId] = useState(null)
+    const [email, setEmail] = useState(null)
+    const [name, setName] = useState(null)
+    const [picture, setPicture] = useState(null)
+
+    const supabaseClient = createClientComponentClient()
+
+    const getCurrentSession = async () => {
+        const res = await supabaseClient.auth.getSession()
+        if ( res && res.data.session) {
+            return res.data.session
+        }
+        clearUser ()
+        return null
+    }
+    const getCurrentUser = async () => {
+        if (id) return
+
+        const res = await supabaseClient.auth.getUser()
+        if (res && res.data.user) {
+            const theUser = res.data.user
+
+            setUser(theUser)
+            setId(theUser.id)
+            setEmail(theUser.email)
+            setName(theUser.identities[0].identity_data.name)
+            setPicture(theUser.identities[0].identity_data.picture)
+        }
+    }
 }
