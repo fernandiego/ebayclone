@@ -19,10 +19,10 @@ const Provider = ({children}) => {
 
     const getCurrentSession = async () => {
         const res = await supabaseClient.auth.getSession()
-        if ( res && res.data.session) {
+        if (res && res.data.session) {
             return res.data.session
         }
-        clearUser ()
+        clearUser()
         return null
     }
     const getCurrentUser = async () => {
@@ -39,4 +39,30 @@ const Provider = ({children}) => {
             setPicture(theUser.identities[0].identity_data.picture)
         }
     }
+    useEffect(() => {
+        const isUser = async () => {
+            const currentSession = await getCurrentSession()
+            if (currentSession) await getCurrentSession()
+        }
+        isUser()
+    }, [])
+    const signOut = async () => {
+        await supabaseClient.auth.signOut()
+        clearUser()
+        router.push('/')
+    }
+    const clearUser = () => {
+        setUser(null)
+        setId(null)
+        setEmail(null)
+        setName(null)
+        setPicture(null)
+    }
+    const exposed = { user, id, email, name, picture, signOut }
+
+    return <Context.Provider value={exposed}>{children}</Context.Provider>
 }
+
+export const userUser = () => useContext(Context)
+
+export default Provider
