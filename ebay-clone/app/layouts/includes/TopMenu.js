@@ -4,10 +4,10 @@ import Link from "next/link";
 import { AiOutlineShoppingCart} from "react-icons/ai";
 import {BsChevronDown} from 'react-icons/bs'
 import React, {useState} from "react";
-import {userUser} from "@/app/context/user";
+import {useUser} from "@/app/context/user";
 
 export default function TopMenu() {
-    const user = userUser;
+    const user = useUser();
     const [isMenu, setIsMenu] = useState(false)
 
 

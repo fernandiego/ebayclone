@@ -43,6 +43,7 @@ const Provider = ({children}) => {
     }
 
     useEffect(() => {
+
         const isUser = async () => {
             const currentSession = await getCurrentSession()
             if (currentSession) await getCurrentUser()
